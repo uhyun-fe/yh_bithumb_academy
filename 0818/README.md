@@ -1,6 +1,6 @@
 # 2021.08.18
 
-### 개요
+## 개요
 
 -  render는 react에서 제공하는 함수
 -  let, const 권장
@@ -16,7 +16,7 @@
       ```
    -  state와 setState
 
-### 실습
+## 실습
 
 -  메인 App.js에서 컴포넌트 import하여 사용하기
    -> 데이터 주고 받기 (this.props 활용)

@@ -1,6 +1,6 @@
 # 2021.08.17
 
-### 개요
+## 개요
 
 -  리액트는?
    -  컴포넌트를 생성하고 활용하는 SPA
@@ -13,7 +13,7 @@
 
 ---
 
-### 개발환경 설정
+## 개발환경 설정
 
 1. node.js 설치
 2. vscode 설치
@@ -29,7 +29,7 @@
 
 ---
 
-### 리액트 프로젝트 구성
+## 리액트 프로젝트 구성
 
 ```
 - node_modules
@@ -44,7 +44,7 @@
 
 ---
 
-### 컴포넌트 여러가지 형식
+## 컴포넌트 여러가지 형식
 
 -  function App() { return ( 'html tag' ); }
 -  const App = () => { return ( 'html tag' ); }
@@ -52,7 +52,7 @@
 
 ---
 
-### 과제 참고 문서
+## 과제 참고 문서
 
 -  [리액트 공식 문서 예제 페이지](https://ko.reactjs.org/community/examples.html)
 -  [강사님 github](https://github.com/posasi2000/bithumb)
