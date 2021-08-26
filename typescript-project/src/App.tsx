@@ -1,4 +1,4 @@
-import MainApp from "./ts-day25/App";
+import MainApp from "./ts-day26/App";
 
 function App() {
    return <MainApp />;

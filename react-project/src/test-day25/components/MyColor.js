@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-export class MyColor extends Component {
+class MyColor extends Component {
    render() {
       const { kind, desc } = this.props;
       const my_style = { color: "#333333", fontSize: "22pt", fontWeight: "bold" };

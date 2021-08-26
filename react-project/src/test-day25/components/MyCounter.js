@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-export class MyCounter extends Component {
+class MyCounter extends Component {
    state = {
       num: 0,
    };
@@ -17,7 +17,7 @@ export class MyCounter extends Component {
    handleRandom = () => {
       // 1 ~ 5 사이 난수 생성 -> 소수점 버림처리
       let randNum = Math.floor(Math.random() * 5 + 1);
-      this.setState({ num: randNum });
+      this.setState({ num: this.state.num + randNum });
    };
 
    render() {

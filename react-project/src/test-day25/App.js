@@ -13,7 +13,7 @@ export class App extends Component {
       return (
          <Container>
             <img src={sample} alt="sample" />
-            <MyColor kind="bithumb" desc="비트캠프" />
+            <MyColor kind="bithumb" desc="목요일" />
             <MyCounter />
          </Container>
       );
