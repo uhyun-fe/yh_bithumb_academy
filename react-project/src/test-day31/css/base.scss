@@ -1,0 +1,18 @@
+$font-stack: Helvetica, sans-serif;
+$primary-color: #ddd;
+
+/* 그룹화 -> % */
+%message-shared {
+   padding: 10px;
+   border: 2px solid green;
+   background: crimson;
+}
+
+body {
+   font: 100% $font-stack;
+   color: $primary-color;
+}
+
+.App {
+   @extend %message-shared; // @extend 로 가져와서 사용
+}

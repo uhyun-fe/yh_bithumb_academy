@@ -14,9 +14,9 @@ class App extends Component {
       return (
          <Container>
             <img src={sample} alt="sample" />
-            {/* <MyColor kind="bithumb" desc="비트" /> */}
-            <TodoList />
+            <MyColor kind="bithumb" desc="비트" />
             <MyCounter />
+            <TodoList />
          </Container>
       );
    }

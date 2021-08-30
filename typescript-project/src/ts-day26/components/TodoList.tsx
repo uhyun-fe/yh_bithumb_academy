@@ -1,89 +1,97 @@
+// @ts-ignore
+import * as React from "react";
 import { useState, useEffect, useCallback } from "react";
-import styled from "styled-components";
-
-// Components
 import TodoItem from "./TodoItem";
 
-// Interface
-interface Iinput {
+// 타입을 인터페이스로 선언
+interface IInput {
    input: string;
 }
 
+// todo item
 interface ITodoItem {
    idx: number;
    todo: string;
-   is_delete: boolean;
-   onDelete: (id: number) => void;
+   isDelete: boolean;
+   onDelete?: Function;
 }
 
+// todo list
 interface ITodoList {
-   todoList: ITodoItem[];
+   todoList: ITodoItem[]; // ITodoItem 배열
 }
 
-function TodoList() {
-   const [input, setInput] = useState<Iinput>({
+export default function TodoList() {
+   const [iInput, setInput] = useState<IInput>({
       input: "",
    });
 
-   const [todoList, setTodoList] = useState<ITodoList>({ todoList: [] });
-   const [todoItem, setTodoItem] = useState<ITodoItem>({ idx: 0, todo: "sdf", is_delete: true, onDelete: () => console.log("Sdf") });
+   const [iTodoItem, setTodoItem] = useState<ITodoItem>({
+      idx: 0,
+      todo: "",
+      isDelete: false,
+   });
+
+   const [iTodoList, setTodoList] = useState<ITodoList>({
+      todoList: [iTodoItem],
+   });
 
    useEffect(() => {
-      console.log(input);
-   }, [input]);
+      setTodoList({
+         todoList: iTodoList.todoList.concat(iTodoItem),
+      });
+   }, [iTodoItem]);
 
-   const onSubmit = () => {};
+   const onSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
+      e.preventDefault(); // 페이지 전환 막기
+      if (iInput.input.length > 0) {
+         setTodoItem({
+            idx: iTodoItem.idx + 1,
+            todo: iInput.input,
+            isDelete: false,
+         });
+      }
 
-   const handleInput = () => {};
+      setInput({
+         // input 창 초기화
+         input: "",
+      });
+   };
 
-   const onDelete = () => {};
+   const handleInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target;
+      setInput({
+         input: value,
+      });
+   };
 
-   const handleSetTodoList = () => {};
+   const onDelete = (idx: number) => {
+      const newTodo: ITodoItem[] = iTodoList.todoList.filter((item) => item.idx !== idx);
+      setTodoList({
+         todoList: newTodo,
+      });
+   };
+
+   const TodoList = iTodoList.todoList.map((data, i) => (
+      <React.Fragment key={i}>
+         <TodoItem idx={data.idx} todo={data.todo} isDelete={data.isDelete} onDelete={onDelete} />
+      </React.Fragment>
+   ));
+
+   const mc = { fontSize: "24pt", color: "green" };
 
    return (
-      <Container>
-         <h2>TodoList.tsx 문서</h2>
+      <div>
+         <p></p>
+         <br></br>
+         <div style={mc}> todoList </div>
          <div>
             <form onSubmit={onSubmit}>
-               <input
-                  type="text"
-                  placeholder="할 일을 입력하세요"
-                  value={input.input}
-                  onChange={({ target: { value } }) => setInput({ input: value })}
-               />
-               <button type="submit">등록</button>
+               <input type="text" name="content" value={iInput.input} onChange={handleInput} />
+               <button type="submit">추가</button>
             </form>
          </div>
-         <TodoItem idx={1} todo={"todo"} is_delete={false} onDelete={(idx) => console.log(idx)} />
-      </Container>
+         <div>{TodoList}</div>
+      </div>
    );
-}
-
-export default TodoList;
-
-const Container = styled.div`
-   margin-bottom: 20px;
-   padding: 20px;
-   background: #dad7f7;
-   form {
-      display: flex;
-      justify-content: space-between;
-      input {
-         padding: 0 20px;
-         width: 70%;
-         height: 40px;
-         font-size: 14pt;
-         border: none;
-         border-radius: 10px;
-         outline: none;
-      }
-      button {
-         padding-top: 2px;
-         width: 15%;
-         font-size: 12pt;
-         border: none;
-         border-radius: 10px;
-         background: #f2f2f2;
-      }
-   }
-`;
+} //end 영임쌤
