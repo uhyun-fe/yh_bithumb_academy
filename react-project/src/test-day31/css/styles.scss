@@ -1,0 +1,13 @@
+@use 'base';
+/*
+https://sass-lang.com/guide
+파일을 불러오는 코드 
+예전에는 @import를 사용하였지만, 
+여러가지 문제점으로 인해 Sass 
+최근 버전인 Dart Sass 에서는 @use 를 사용한다.
+*/
+
+.inverse {
+   background-color: base.$primary-color;
+   color: white;
+}

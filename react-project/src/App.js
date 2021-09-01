@@ -1,7 +1,6 @@
 import React from "react";
 
-import "./App.css";
-import MainApp from "./test-day31/App";
+import MainApp from "./test-day0901/App";
 
 function App() {
    return <MainApp />;

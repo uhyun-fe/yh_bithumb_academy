@@ -1,18 +1,111 @@
-$font-stack: Helvetica, sans-serif;
-$primary-color: #ddd;
+/*
+ https://sass-lang.com/guide  
+ npm install sass --save
+ npm  install  node-sass  <=====콘솔창에서 설치
+ npm install  classnames
+*/
 
-/* 그룹화 -> % */
-%message-shared {
-   padding: 10px;
-   border: 2px solid green;
-   background: crimson;
-}
+$font-stack: Helvetica, sans-serif;
+$primary-color: #333;
 
 body {
    font: 100% $font-stack;
    color: $primary-color;
+   text-align: center;
 }
 
-.App {
-   @extend %message-shared; // @extend 로 가져와서 사용
+/*   
+재사용 하려는 css 코드를 묶어 그룹으로 만들어 사용할 수 있다.
+*/
+@mixin transform($property) {
+   -webkit-transform: $property;
+   -ms-transform: $property;
+   transform: $property;
+}
+.box {
+   @include transform(rotate(30deg));
+}
+
+/*
+원하는 속성들을 모아 "%변수명" 으로 선언하고, @extend 를 이용해서 불러온다.
+*/
+/* 이 CSS는 @extend를 사용하였으므로 출력됩니다. */
+%message-shared {
+   border: 1px solid #ccc;
+   padding: 10px;
+   color: #333;
+}
+
+/* 이 CSS는 @extend를 사용하지 않았으므로 출력되지 않습니다. */
+%equal-heights {
+   display: flex;
+   flex-wrap: wrap;
+}
+
+.message {
+   @extend %message-shared;
+}
+
+.success {
+   @extend %message-shared;
+   border-color: green;
+}
+
+.error {
+   @extend %message-shared;
+   border-color: red;
+}
+
+.warning {
+   @extend %message-shared;
+   border-color: yellow;
+}
+
+/*mixin사용  @include  */
+@mixin theme($theme: DarkGray) {
+   background: $theme;
+   box-shadow: 0 0 1px rgba($theme, 0.25);
+   color: #fff;
+}
+
+.info {
+   @include theme;
+}
+.alert {
+   @include theme($theme: DarkRed);
+}
+.success {
+   @include theme($theme: DarkGreen);
+}
+
+/*
+간단한 연산자 +, -, *, /, % 를 사용할 수 있다.
+다음 예는 960px 에서 600px 만큼의 크기를 설정하고 싶은 경우를 가정한다.
+*/
+.container {
+   width: 100%;
+}
+
+article[role="main"] {
+   float: left;
+   width: 600px / 960px * 100%; /* CSS : 62.5% */
+}
+
+aside[role="complementary"] {
+   float: right;
+   width: 300px / 960px * 100%; /* CSS : 31.25% */
+}
+
+.loading {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   margin: 50px 0;
+   color: #666;
+   font-size: 1.5em;
+   img {
+      width: 300px;
+      height: 150px;
+   }
 }
