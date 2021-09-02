@@ -12,13 +12,13 @@
    -  간단한 설명 첨부 (접근방식)
    -  id, title, url, thumbnailUrl 표시
    -  [데이터 서버 url](https://jsonplaceholder.typicode.com/photos)
-   -  9/7 까지 제출
+   -  9/8 까지 제출
 2. material-ui 사용해서 Dashboard, Sign in, Blog, Album 4개항목 혼합해서 나만의 UI화면 완성
    -  (최유현)test-materialUI.zip -> 슬랙에 업로드
    -  js파일 5개 - 10개
    -  [첨조](https://material-ui.com/getting-started/templates/)
    -  실행된 화면 캡쳐 (5개정도)
-   -  9/7 까지 제출
+   -  9/8 까지 제출
 
 ```
 - components
@@ -44,7 +44,7 @@
 -  설치
 
    ```
-   npm install redux react-redux
+   npm install redux react-redux redux-actions
    ```
 
 -  store
